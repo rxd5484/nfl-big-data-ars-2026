@@ -2,8 +2,6 @@
 
 **NFL Big Data Bowl, NYU Edition** · 2021 Kansas City Chiefs, Weeks 1–8 · 203 passing plays
 
-![Kelce open-space rate vs attention on Hill](outputs/output1_open_space_rate.png)
-
 ## Summary (what we built, what we found, who it's for)
 
 We built a **defensive gravity metric**. It counts the coverage defenders within 5 yards of Tyreek Hill 1.5 seconds after the snap, then checks whether Travis Kelce has more space when Hill draws that attention. **The gravity hypothesis was not supported.** When Hill had 2+ defenders nearby, Kelce was open (3+ yards of separation) on **40.0%** of plays, against **49.4%** when Hill had 0–1. The correlation was weak and not significant (Spearman ρ = −0.08, p = 0.27). What actually predicted Kelce's space was **coverage scheme**: about **3.3–3.6 yards** of separation against zone, but only **1.6–2.0 yards** against man, whatever was happening around Hill. Coaches, scouts and broadcasters can use this. These are associations from tracking data, not proof of cause and effect.
@@ -27,13 +25,6 @@ Box-score stats only credit the player who catches the ball. A common belief is 
 | **Zone coverage:** Kelce separation | 3.27 yd (n = 19) | 3.63 yd (n = 124) | Loose either way |
 
 How often Hill drew attention, across 236 plays: he had 2+ nearby defenders on about **24%** of plays. The most common case was exactly 1 defender (140 plays).
-
-More charts are in `outputs/`:
-- `output2_separation_gain.png`: how Kelce's separation changes between the snap and 1.5 s
-- `output3_attention_relationship.png`: attention on Hill vs Kelce's space
-- `output4_man_vs_zone.png`: the coverage-scheme split
-- `metric1_*.png`, `metric2_*.png`, `metric3_*.png`: details for each metric
-
 ## Method
 
 1. **Data:** the provided NFL Next Gen Stats tracking data (10 frames/second) plus PFF scouting data. We kept Chiefs offensive plays where **Hill (nflId 43454) and Kelce (nflId 40011) both ran a route** (238 plays). Plays where a 1.5 s snapshot wasn't possible were dropped, leaving **203 plays** in the final analysis.
@@ -72,7 +63,7 @@ python src/final_outputs_analysis.py
 python src/visualize_metrics.py
 ```
 
-The processed data and all output charts are already committed, so you can read the results without running anything.
+The processed data and outputs are already committed, so you can read the results without running anything.
 
 ## Repository layout
 
@@ -85,7 +76,7 @@ src/
   final_outputs_analysis.py             # merge metrics, produce the 4 outputs
   visualize_metrics.py                  # metric charts
 data/processed/                         # kc_plays, kc_snapshots, metric CSVs, DATA_NOTES.md
-outputs/                                # charts, FINDINGS_REPORT.md, PROJECT_SUMMARY.md
+outputs/                                # FINDINGS_REPORT.md, PROJECT_SUMMARY.md
 ```
 
 Full write-ups: [`outputs/FINDINGS_REPORT.md`](outputs/FINDINGS_REPORT.md) and [`outputs/PROJECT_SUMMARY.md`](outputs/PROJECT_SUMMARY.md). Data details and validation checks: [`data/processed/DATA_NOTES.md`](data/processed/DATA_NOTES.md).
