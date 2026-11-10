@@ -8,6 +8,8 @@ zone as against man**, whether or not Hill is drawing attention.
 
 > This is an association study on one team and eight games. It shows what happened, not what caused it.
 
+**Refer to the PDF for the visualization report.**
+
 ---
 
 ## Contents
