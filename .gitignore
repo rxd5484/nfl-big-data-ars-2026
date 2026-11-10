@@ -1,0 +1,9 @@
+# Raw source data (cloned by hand, ~826 MB) - never commit
+data/raw/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
